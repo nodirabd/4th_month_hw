@@ -1,0 +1,33 @@
+<h1>Конный тур</h1>
+
+{% for i in companies %}
+    <h2>Название: {{ i.company_name }}</h2>
+
+    <h3>Услуги компании</h3>
+    <p>
+        {% for service in i.company_service.all %}
+            {{ service.service_name }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+            Услуги отсутствуют
+        {% endfor %}
+    </p>
+
+
+    <p>Дата регистрации компании: {{ i.created_at }}</p>
+
+    <h2>Отзывы</h2>
+    <ul>
+        {% for rev in i.reviews.all %}
+        <li>
+            <p>Оценка: {{ rev.rating }} / 5</p>
+            <p>Текст: {{ rev.text }}</p>
+            <p>Автор: {{ rev.choice_human.name }}</p>
+            <p>Дата отзыва: {{ rev.created_at }}</p>
+        </li>
+        {% empty %}
+            <li>Отзывов пока нет</li>
+        {% endfor %}
+    </ul>
+    
+    <hr>
+{% endfor %}
