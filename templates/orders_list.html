@@ -1,0 +1,20 @@
+<h1>Orders List</h1>
+<a href="/create_order/">Add order</a>
+
+
+<ul>
+    {% for i in orders %}
+        <li>
+            <h2>Имя: {{i.name}}</h2>
+            <img src="{{ i.photo.url }}" alt="" width="200" height="200">
+            <p>You ordered a horse tour from : {{i.choice_blog}}</p>
+            <p>Your card number : {{i.number_card}}</p>
+            <p>Date of the order: {{i.created_at}}</p>
+            <p>Date of the updated data: {{i.updated_at}}</p>
+
+            <button><a href="/orders_list/{{ i.id }}/delete/"> DELETE</a></button>
+            <button><a href="/orders_list/{{ i.id }}/update/">EDIT</a></button>
+        </li>
+
+    {% endfor %}
+</ul>

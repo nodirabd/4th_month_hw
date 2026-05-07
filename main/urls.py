@@ -21,9 +21,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Теперь Конный тур — главная страница
+    path('', include('order_tour.urls')), 
+    path('', include('book.urls')),
     path('', include('horse_tour.urls')), 
-    # Книги теперь будут доступны по адресу 127.0.0.1:8000/book/
-    path('book/', include('book.urls')),
+    
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
