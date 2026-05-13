@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include('order_tour.urls')), 
     path('', include('book.urls')),
     path('', include('horse_tour.urls')), 
-    
+    path('', include('users.urls')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

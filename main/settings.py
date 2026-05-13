@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'book',
     'horse_tour',
     'order_tour',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,5 @@ STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media' 
 
+# Для тестирования отправки писем в консоль (без реального SMTP сервера)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

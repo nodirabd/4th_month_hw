@@ -1,0 +1,23 @@
+<h2>Авторизация + Капча</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    
+    <p><label>Логин:</label><br>{{ form.username }}{{ form.username.errors }}</p>
+    <p><label>Пароль:</label><br>{{ form.password }}{{ form.password.errors }}</p>
+    
+    <!-- Передача скрытых чисел обратно во view для проверки решения -->
+    {{ form.num1 }}
+    {{ form.num2 }}
+    
+    <p>
+        <strong>Проверка:</strong> Сколько будет 
+        {% if form.is_bound %}{{ form.num1.value }}{% else %}{{ form.initial.num1 }}{% endif %} + 
+        {% if form.is_bound %}{{ form.num2.value }}{% else %}{{ form.initial.num2 }}{% endif %}? 
+        <br>
+        {{ form.captcha_input }}
+        {{ form.captcha_input.errors }}
+    </p>
+    
+    <button type="submit">Войти и получить код</button>
+</form>

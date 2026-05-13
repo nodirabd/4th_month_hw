@@ -1,0 +1,7 @@
+<h2>Регистрация резюме на работу (10 полей)</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить анкету</button>
+</form>
+<p><a href="{% url 'login' %}">Уже отправляли? Войти для просмотра</a></p>

@@ -1,0 +1,22 @@
+<h2>База полученных Анкет и Резюме</h2>
+<p>Вы вошли как: <strong>{{ request.user.username }}</strong></p>
+<hr>
+
+{% for profile in profiles %}
+            {% if profile.photo %}
+                <img src="{{ profile.photo.url }}" width="130" height="160" >
+            {% else %}
+            {% endif %}
+       
+            <h3 style="margin-top: 0;">{{ profile.full_name }}</h3>
+            <p><strong>Город:</strong> {{ profile.city }} | <strong>Дата рождения:</strong> {{ profile.birth_date }}</p>
+            <p><strong>Контакты:</strong> {{ profile.phone }} | <strong>Образование:</strong> {{ profile.education }}</p>
+            <p><strong>Опыт:</strong> {{ profile.experience_years }} г. | <strong>Зарплата:</strong> {{ profile.desired_salary }} KGS</p>
+            <p><strong>Навыки:</strong> {{ profile.skills }}</p>
+            {% if profile.resume_file %}
+                <p><a href="{{ profile.resume_file.url }}" target="_blank"></a>📥 Скачать файл резюме</a></p>
+            {% endif %}
+       
+{% empty %}
+    <p>Список анкет пуст.</p>
+{% endfor %}

@@ -1,0 +1,13 @@
+<h2>Двухфакторная проверка (2FA)</h2>
+<p style="color: gray;">Код отправлен на вашу почту(смотрите в консоль терминала).</p>
+
+{% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="code" placeholder="4-значный код" required maxlength="4" autocomplete="off">
+    <button type="submit">Войти</button>
+</form>
+<p><a href="{% url 'login' %}">Вернуться к форме входа</a></p>
