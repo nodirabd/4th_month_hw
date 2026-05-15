@@ -1,4 +1,5 @@
-<h1>🐎 {{ company.company_name }}</h1>
+{% include 'header.html' %}
+<h1> {{ company.company_name }}</h1>
 <p>Дата: {{ company.created_at }}</p>
 
 <h3>Услуги:</h3>
@@ -12,7 +13,7 @@
 
 <h3>Отзывы:</h3>
 {% for review in reviews %}
-    <p><b>{{ review.choice_human.name }}</b> — ⭐ {{ review.rating }}/5</p>
+    <p><b>{{ review.choice_human.name }}</b> — {{ review.rating }}/5</p>
     <p>{{ review.text }}</p>
     <hr>
 {% empty %}

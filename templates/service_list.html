@@ -1,4 +1,5 @@
-<h1>🏇 Услуги конных туров</h1>
+{% include 'header.html' %}
+<h1>Услуги конных туров</h1>
 
 <form method="GET">
     <input type="text" name="s" value="{{ query }}" placeholder="Поиск услуги...">
@@ -12,7 +13,7 @@
     </div>
     <hr>
 {% empty %}
-    <p>Услуги не найдены 😔</p>
+    <p>Услуги не найдены </p>
 {% endfor %}
 
 <div>
