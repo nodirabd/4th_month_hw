@@ -1,4 +1,8 @@
 <h1>BOOKS</h1>
+<form method="GET">
+    <input type="text" name="s" value="{{ query }}" placeholder="Поиск книги...">
+    <button type="submit">Найти</button>
+</form>
 
 {% for i in books %}
 
@@ -8,3 +12,15 @@
 <a href="/book_detail/{{ i.id }}/">Подробнее</a>
 
 {% endfor %}
+
+<div>
+    {% if books.has_previous %}
+        <a href="?page={{ books.previous_page_number }}&s={{ query }}">← Назад</a>
+    {% endif %}
+
+    Страница {{ books.number }} из {{ books.paginator.num_pages }}
+
+    {% if books.has_next %}
+        <a href="?page={{ books.next_page_number }}&s={{ query }}">Вперёд →</a>
+    {% endif %}
+</div>

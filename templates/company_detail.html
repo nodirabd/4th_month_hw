@@ -1,0 +1,22 @@
+<h1>🐎 {{ company.company_name }}</h1>
+<p>Дата: {{ company.created_at }}</p>
+
+<h3>Услуги:</h3>
+<ul>
+    {% for service in company.company_service.all %}
+        <li>{{ service.service_name }} — {{ service.description }}</li>
+    {% empty %}
+        <li>Услуги отсутствуют</li>
+    {% endfor %}
+</ul>
+
+<h3>Отзывы:</h3>
+{% for review in reviews %}
+    <p><b>{{ review.choice_human.name }}</b> — ⭐ {{ review.rating }}/5</p>
+    <p>{{ review.text }}</p>
+    <hr>
+{% empty %}
+    <p>Отзывов пока нет</p>
+{% endfor %}
+
+<a href="{% url 'company_list' %}">← Назад</a>

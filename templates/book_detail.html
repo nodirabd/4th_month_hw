@@ -8,3 +8,8 @@
 <p>{{ book.quantity }}</p>
 <p>{{ book.type_book }}</p>
 <p>{{ book.created_at }}</p>
+
+
+<p>👁 Просмотры: {{ book.views }}</p>
+
+<a href="{% url 'book_list' %}">← Назад</a>

@@ -1,0 +1,26 @@
+<h1>🏇 Услуги конных туров</h1>
+
+<form method="GET">
+    <input type="text" name="s" value="{{ query }}" placeholder="Поиск услуги...">
+    <button type="submit">Найти</button>
+</form>
+
+{% for service in services %}
+    <div>
+        <h2>{{ service.service_name }}</h2>
+        <p>{{ service.description }}</p>
+    </div>
+    <hr>
+{% empty %}
+    <p>Услуги не найдены 😔</p>
+{% endfor %}
+
+<div>
+    {% if services.has_previous %}
+        <a href="?page={{ services.previous_page_number }}&s={{ query }}">← Назад</a>
+    {% endif %}
+    Страница {{ services.number }} из {{ services.paginator.num_pages }}
+    {% if services.has_next %}
+        <a href="?page={{ services.next_page_number }}&s={{ query }}">Вперёд →</a>
+    {% endif %}
+</div>

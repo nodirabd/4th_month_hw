@@ -1,0 +1,28 @@
+<h1>🐎 Конные туры — Компании</h1>
+
+<form method="GET">
+    <input type="text" name="s" value="{{ query }}" placeholder="Поиск компании...">
+    <button type="submit">Найти</button>
+</form>
+
+{% for company in companies %}
+    <div>
+        <a href="{% url 'company_detail' company.id %}">
+            <h2>{{ company.company_name }}</h2>
+        </a>
+        <p>Дата: {{ company.created_at }}</p>
+    </div>
+    <hr>
+{% empty %}
+    <p>Компании не найдены 😔</p>
+{% endfor %}
+
+<div>
+    {% if companies.has_previous %}
+        <a href="?page={{ companies.previous_page_number }}&s={{ query }}">← Назад</a>
+    {% endif %}
+    Страница {{ companies.number }} из {{ companies.paginator.num_pages }}
+    {% if companies.has_next %}
+        <a href="?page={{ companies.next_page_number }}&s={{ query }}">Вперёд →</a>
+    {% endif %}
+</div>

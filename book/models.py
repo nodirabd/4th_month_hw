@@ -20,8 +20,9 @@ class Book(models.Model):
         ("психология", "психология"),
     )
     quantity = models.PositiveIntegerField(verbose_name='укажите количество страниц', default=20, null=True)
-    type_book = models.CharField(max_length=100, choices= TYPE_BOOK, default='классика')
+    type_book = models.CharField(max_length=100, choices=TYPE_BOOK, default='классика')
+    views = models.PositiveIntegerField(default=0)   
     created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return self.title
-# Create your models here.
