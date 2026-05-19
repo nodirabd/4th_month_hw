@@ -1,8 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from . import models, forms 
-
-
-
 def update_order_view(request, id):
     order_id = get_object_or_404(models.Orders, id = id)
     if request.method == 'POST':
@@ -17,14 +14,10 @@ def update_order_view(request, id):
     'form': form, 
     'order_id': order_id
     })
-
-
 def delete_order_view(request, id):
     order_id = get_object_or_404(models.Orders, id=id)
     order_id.delete()
     return redirect('/orders_list/')
-
-
 def create_order_view(request):
     if request.method == 'POST':
         form = forms.OrdersForm(request.POST, request.FILES)
